@@ -51,6 +51,10 @@
   --content-narrow: 640px;
   --content-default: 960px;
   --content-wide: 1200px;
+  nav a.nav-active {
+  color: var(--color-primary) !important;
+  font-weight: 500;
+}
 }
 
 [data-theme="dark"] {
@@ -189,11 +193,12 @@ header{position:sticky;top:0;z-index:100;background:oklch(from var(--color-bg) l
 .project-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;transition:box-shadow var(--transition-interactive),transform var(--transition-interactive);}
 .project-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
 .project-card-inner{padding:var(--space-6);}
-.project-card.featured .project-card-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:var(--space-8);align-items:center;}
+.project-card.featured .project-card-inner{display:block;}
 .project-domain{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-primary);margin-bottom:var(--space-3);}
 .project-domain .domain-dot{width:6px;height:6px;border-radius:50%;background:var(--color-primary);}
 .project-title{font-family:var(--font-display);font-size:var(--text-lg);font-weight:600;letter-spacing:-0.02em;color:var(--color-text);margin-bottom:var(--space-3);line-height:1.25;}
 .project-desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;margin-bottom:var(--space-4);}
+.project-desc{max-width:none;}
 .project-meta{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-4);}
 .meta-chip{font-size:var(--text-xs);padding:calc(var(--space-1) * 1.5) var(--space-3);border-radius:var(--radius-full);background:var(--color-surface-offset);color:var(--color-text-muted);}
 .project-links{display:flex;gap:var(--space-3);}
@@ -258,11 +263,11 @@ footer{border-top:1px solid var(--color-divider);padding-block:var(--space-10);}
   .hero-grid{grid-template-columns:1fr;}
   .hero-visual{display:none;}
   .about-grid{grid-template-columns:1fr;}
-  .projects-grid{grid-template-columns:1fr;}
-  .project-card.featured .project-card-inner{grid-template-columns:1fr;}
+  .projects-grid{grid-template-columns:1fr 1fr;}
+  .project-card.featured .project-card-inner{display:block;}
   .contact-inner{grid-template-columns:1fr;}
   .skills-layout{grid-template-columns:1fr;}
-  .nav-links,.btn-contact{display:none;}
+  .nav-links{display:none;}
   .hamburger{display:flex;}
   .footer-inner{flex-direction:column;gap:var(--space-4);text-align:center;}
 }
@@ -287,15 +292,14 @@ footer{border-top:1px solid var(--color-divider);padding-block:var(--space-10);}
         <span class="nav-logo-text">Academic work portfolio </span>
       </a>
       <div class="nav-links" role="list">
-        <a href="#about" role="listitem">Projects</a>
-        <a href="#projects" role="listitem">Skills</a>
-        <a href="#skills" role="listitem">About</a>
+        <a href="#skills" role="listitem">Skills</a>
+        <a href="#projects" role="listitem">Projects</a>
+        <a href="#contact" role="listitem">Contact</a>
       </div>
       <div class="nav-actions">
         <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-        <a href="#contact" class="btn-contact">Contact</a>
         <button class="hamburger" aria-label="Open menu" id="hamburger">
           <span></span><span></span><span></span>
         </button>
@@ -305,9 +309,9 @@ footer{border-top:1px solid var(--color-divider);padding-block:var(--space-10);}
 </header>
 
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
-  <a href="#about" onclick="closeMobileNav()">About</a>
-  <a href="#projects" onclick="closeMobileNav()">Research</a>
   <a href="#skills" onclick="closeMobileNav()">Skills</a>
+  <a href="#projects" onclick="closeMobileNav()">Projects</a>
+  <a href="#contact" onclick="closeMobileNav()">Contact</a>
 </nav>
 
 <main id="main">
@@ -321,16 +325,16 @@ footer{border-top:1px solid var(--color-divider);padding-block:var(--space-10);}
   Data and Research Projects
 </h1>
         <p class="hero-bio reveal reveal-delay-1" style="font-size: var(--text-base); color: var(--color-text-muted); line-height: 1.6;">
-            by Yana Rasheva, BSc Social Sciences and Natural Sciences (Double Degree)<br>
+            by Yana Rasheva, BSc Social Sciences and Natural Sciences<br>
             Minerva University, San Francisco (CA)</p>
 
         <div class="hero-tags reveal reveal-delay-2">
-          <span class="tag primary">Policy analysis</span>
           <span class="tag primary">Econometrics</span>
-          <span class="tag primary">Science communication</span>
+          <span class="tag primary">Policy analysis</span>
           <span class="tag primary">R / Python / Excel</span>
+          <span class="tag primary">Science communication</span>
         </div>
-        <div class="hero-cta reveal reveal-delay-3">
+        <div class="hero-cta reveal reveal-delay-3" style="margin-top: 5rem;">
           <a href="#projects" class="btn-primary">View Research</a>
           <a href="#" class="btn-secondary">
             Download CV
@@ -377,41 +381,59 @@ footer{border-top:1px solid var(--color-divider);padding-block:var(--space-10);}
 
 <hr class="divider">
 
-<!-- ABOUT -->
-<section class="section" id="about">
+<!-- SKILLS -->
+<section class="section skills-bg" id="skills">
   <div class="container-wide">
-    <div class="about-grid">
-      <div class="about-text">
-        <div class="section-header">
-          <p class="section-label reveal">About</p>
-          <h2 class="section-title reveal reveal-delay-1">Research at the<br>intersection of<br>data &amp; policy</h2>
-        </div>
-        <p class="reveal">I am an early-career researcher with a rigorous academic background in environmental science, climate modeling, and public health policy. My work bridges quantitative data analysis and evidence-based policymaking.</p>
-        <p class="reveal reveal-delay-1">I specialize in geospatial satellite data analysis using Google Earth Engine, statistical modeling in R and Python, and translating complex scientific findings into clear policy recommendations.</p>
-        <p class="reveal reveal-delay-2">Beyond research, I bring UX design experience — the ability to communicate technical findings to non-technical audiences is central to everything I do.</p>
-        <div class="education-card reveal reveal-delay-3">
-          <p class="year">Current</p>
-          <h4>Advanced Degree in Environmental Science &amp; Policy</h4>
-          <p>Capstone research on climate modeling and antimicrobial resistance governance frameworks.</p>
-        </div>
-      </div>
-      <div>
-        <div class="section-header">
-          <p class="section-label reveal">Toolkit</p>
-          <h3 class="section-title reveal reveal-delay-1" style="font-size:var(--text-lg)">Methods &amp; Tools</h3>
-        </div>
-        <div class="tools-grid">
-          <div class="tool-badge reveal"><span class="tool-icon">🌍</span><div><div class="tool-name">Google Earth Engine</div><div class="tool-type">Geospatial</div></div></div>
-          <div class="tool-badge reveal reveal-delay-1"><span class="tool-icon">R</span><div><div class="tool-name">R Programming</div><div class="tool-type">Statistics</div></div></div>
-          <div class="tool-badge reveal reveal-delay-1"><span class="tool-icon">Py</span><div><div class="tool-name">Python</div><div class="tool-type">Data Analysis</div></div></div>
-          <div class="tool-badge reveal reveal-delay-2"><span class="tool-icon">📡</span><div><div class="tool-name">Satellite Data</div><div class="tool-type">Remote Sensing</div></div></div>
-          <div class="tool-badge reveal reveal-delay-2"><span class="tool-icon">📊</span><div><div class="tool-name">Econometrics</div><div class="tool-type">Modeling</div></div></div>
-          <div class="tool-badge reveal reveal-delay-3"><span class="tool-icon">🐙</span><div><div class="tool-name">GitHub</div><div class="tool-type">Version Control</div></div></div>
-          <div class="tool-badge reveal reveal-delay-3"><span class="tool-icon">🗺️</span><div><div class="tool-name">GIS / SQL</div><div class="tool-type">Spatial DB</div></div></div>
-          <div class="tool-badge reveal"><span class="tool-icon">📝</span><div><div class="tool-name">Policy Writing</div><div class="tool-type">Communication</div></div></div>
-        </div>
-      </div>
+    <div class="section-header">
+      <h2 class="section-title reveal reveal-delay-1">Skills</h2>
     </div>
+    <div class="skills-layout">
+      <div class="skill-category reveal">
+        <div class="skill-category-title">
+          <span class="skill-category-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </span>
+          Techical 
+        </div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-name">Statistical Modeling in R</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:92%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Statistical Modeling in Python</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:46%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Microsoft Excel </span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">SQL</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:50%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Econometrics and <br>Quasi-Experimental Methods</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>          
+        </div>
+      </div>
+      <div class="skill-category reveal reveal-delay-1">
+        <div class="skill-category-title">
+          <span class="skill-category-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </span>
+          Research and methods
+        </div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-name">Policy Analysis</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Academic Writing</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:100%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Literature Review</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:100%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Gap Analysis</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Science Communication</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Vizual Storytelling</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-category reveal reveal-delay-2">
+        <div class="skill-category-title">
+          <span class="skill-category-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </span>
+          Core courses
+        </div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-name">Modern Economic Thought (SS111)</span></div>
+          <div class="skill-item"><span class="skill-name">Econometrics and Economic Systems (SS154)</span></div>
+          <div class="skill-item"><span class="skill-name">Statistical Modeling: Prediction and Causal Inference (CS130)</span></div>
+          <div class="skill-item"><span class="skill-name">Modelling and Measuring Environmental Systems (NS156)</span></div>
+        </div>
+      </div>
+    </div>  
   </div>
 </section>
 
@@ -421,196 +443,130 @@ footer{border-top:1px solid var(--color-divider);padding-block:var(--space-10);}
 <section class="section" id="projects">
   <div class="container-wide">
     <div class="section-header">
-      <p class="section-label reveal">Research Portfolio</p>
-      <h2 class="section-title reveal reveal-delay-1">Academic Projects</h2>
-      <p class="section-subtitle reveal reveal-delay-2">A selection of research projects spanning climate science, public health policy, and environmental monitoring.</p>
+      <h2 class="section-title reveal reveal-delay-1">Academic Work</h2>
+      <p class="section-subtitle reveal reveal-delay-2">Selected work in climate science, public health, and environmental research.</p>
     </div>
     <div class="projects-grid">
 
-      <!-- Featured -->
-      <div class="project-card featured project-featured reveal">
-        <div class="project-card-inner">
-          <div>
-            <span class="project-domain"><span class="domain-dot"></span>Climate Science</span>
-            <h3 class="project-title">Extreme Precipitation Modeling with Satellite Data</h3>
-            <p class="project-desc">Analyzed spatio-temporal patterns of extreme precipitation events using Google Earth Engine and multi-decade satellite datasets. Applied econometric modeling to attribute trends to climate drivers, with implications for regional flood risk assessment and infrastructure planning.</p>
-            <div class="project-meta">
-              <span class="meta-chip">Google Earth Engine</span>
-              <span class="meta-chip">R</span>
-              <span class="meta-chip">MODIS / CHIRPS</span>
-              <span class="meta-chip">Econometrics</span>
-              <span class="meta-chip">Geospatial</span>
-            </div>
-            <div class="project-links">
-              <a href="#" class="project-link">View Write-up <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-              <a href="#" class="project-link">GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-            </div>
-          </div>
-          <div class="project-visual" aria-hidden="true">
-            <div class="project-visual-chart">
-              <div class="chart-bars">
-                <div class="chart-bar" style="height:45%"></div>
-                <div class="chart-bar" style="height:62%"></div>
-                <div class="chart-bar" style="height:38%"></div>
-                <div class="chart-bar" style="height:78%"></div>
-                <div class="chart-bar" style="height:55%"></div>
-                <div class="chart-bar" style="height:91%"></div>
-                <div class="chart-bar" style="height:67%"></div>
-                <div class="chart-bar" style="height:84%"></div>
-                <div class="chart-bar" style="height:72%"></div>
-                <div class="chart-bar" style="height:100%"></div>
-                <div class="chart-bar" style="height:88%"></div>
-                <div class="chart-bar" style="height:76%"></div>
-              </div>
-            </div>
-            <div class="outcome-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-              Significant upward trend detected
-            </div>
-          </div>
-        </div>
+    <!-- Featured -->
+  <div class="project-card featured project-featured reveal">
+  <div class="project-card-inner">
+      <span class="project-domain"><span class="domain-dot"></span>Senior Thesis</span>
+      <h3 class="project-title">Antimicrobial Resistance Governance in Bulgaria <br> Policy Feedback Analysis of the 2023 eRx Mandate</h3>
+      <p class="project-desc">
+        Applies policy feedback theory to identify the systemic drivers of Bulgaria's persistently high antibiotic resistance — among the highest in the EU. Using OLS time-series regressions on EARS-Net data (2006–2023), the study finds that governance quality, particularly rule of law, is a stronger predictor of resistance than healthcare spending or socioeconomic inequality alone. The analysis then diagnoses where Bulgaria's 2023 mandatory electronic prescribing (eRx) mandate is structurally vulnerable to reproducing the informal bargaining dynamics it is designed to displace.
+      </p>
+      <div class="project-meta">
+        <span class="meta-chip">Policy Feedback Theory</span>
+        <span class="meta-chip">OLS Regression</span>
+        <span class="meta-chip">R</span>
+        <span class="meta-chip">EARS-Net Data</span>
+        <span class="meta-chip">Institutional Analysis</span>
+        <span class="meta-chip">Public Health Governance</span>
       </div>
+      <div class="project-links">
+        <a href="https://github.com/yanarashevaa/AMR-Bulgaria-Policy-Feedback" target="_blank" rel="noopener noreferrer" class="project-link">
+          GitHub
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1_J0OsA9GQE0QwId3ecYo9osuwcljv1_w/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="project-link">
+    Read Paper
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+  </a>
+      </div>
+    </div>
+</div>
 
       <!-- Card 2 -->
-      <div class="project-card reveal">
-        <div class="project-card-inner">
-          <span class="project-domain"><span class="domain-dot"></span>AMR Policy</span>
-          <h3 class="project-title">Antimicrobial Resistance Governance Frameworks</h3>
-          <p class="project-desc">Comparative policy analysis of national AMR action plans across healthcare systems. Evaluated institutional design, regulatory feedback mechanisms, and compliance incentives using structured literature review and qualitative coding.</p>
-          <div class="project-meta">
-            <span class="meta-chip">Policy Analysis</span>
-            <span class="meta-chip">Comparative Governance</span>
-            <span class="meta-chip">Literature Review</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="project-link">Read Paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-          </div>
-        </div>
-      </div>
+<div class="project-card reveal">
+  <div class="project-card-inner">
+    <span class="project-domain"><span class="domain-dot"></span>Econometrics</span>
+    <h3 class="project-title">A Smoking Gun or Just Smoke? Cannabis Legalisation & Substance Abuse</h3>
+    <p class="project-desc">Co-authored study examining the causal impact of recreational cannabis legalisation on substance abuse admission rates in Washington State. Using a Difference-in-Differences methodology with Wisconsin as the control group, the analysis finds a statistically significant increase of ~310 admissions per 100,000 population annually attributable to legalisation (p = 0.033).</p>
+    <div class="project-meta">
+      <span class="meta-chip">Difference-in-Differences</span>
+      <span class="meta-chip">OLS Regression</span>
+      <span class="meta-chip">R</span>
+      <span class="meta-chip">SAMHSA Data</span>
+      <span class="meta-chip">Public Health Policy</span>
+    </div>
+    <div class="project-links">
+      <a href="https://drive.google.com/file/d/1HzjhtNqrN4fBublo2BlrV2gb28U93fL2/view?usp=drive_link" target="_blank" class="project-link">Read Paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+    </div>
+  </div>
+</div>
 
       <!-- Card 3 -->
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-card-inner">
-          <span class="project-domain"><span class="domain-dot"></span>Air Quality</span>
-          <h3 class="project-title">AOD & PM2.5 Monitoring via Remote Sensing</h3>
-          <p class="project-desc">Processed and analyzed aerosol optical depth (AOD) and PM2.5 data from MODIS and Sentinel satellite imagery. Developed geospatial visualization workflows in Python to map pollution hotspots and seasonal patterns.</p>
-          <div class="project-meta">
-            <span class="meta-chip">Python</span>
-            <span class="meta-chip">MODIS</span>
-            <span class="meta-chip">Sentinel</span>
-            <span class="meta-chip">PM2.5</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="project-link">View Analysis <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-            <a href="#" class="project-link">GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-          </div>
-        </div>
-      </div>
+<div class="project-card reveal">
+  <div class="project-card-inner">
+    <span class="project-domain"><span class="domain-dot"></span>Causal Inference</span>
+    <h3 class="project-title">Causal Inference Methods: Matching, IV & Synthetic Control in R</h3>
+    <p class="project-desc">R Markdown assignment applying a full toolkit of causal inference methods to real datasets. Used propensity score matching, genetic matching, and sensitivity analysis on the LaLonde job training data, instrumental variables (LATE via WALD estimator) on JTPA earnings data, and replicated a Synthetic Control analysis of Florida's Stand Your Ground law and its effect on homicide rates — including spaghetti plots and RMSPE placebo tests.</p>
+    <div class="project-meta">
+      <span class="meta-chip">Synthetic Control</span>
+      <span class="meta-chip">Propensity Score Matching</span>
+      <span class="meta-chip">Genetic Matching</span>
+      <span class="meta-chip">Instrumental Variables</span>
+      <span class="meta-chip">R</span>
+      <span class="meta-chip">Sensitivity Analysis</span>
+    </div>
+    <div class="project-links">
+      <a href="https://drive.google.com/file/d/1nMQqyiiUjA8xsgkDUs3rdYx23IN3mj3Z/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="project-link">View Report <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+    </div>
+  </div>
+</div>
 
       <!-- Card 4 -->
-      <div class="project-card reveal">
-        <div class="project-card-inner">
-          <span class="project-domain"><span class="domain-dot"></span>Constitutional Design</span>
-          <h3 class="project-title">Institutional Frameworks & Policy Feedback Theory</h3>
-          <p class="project-desc">Applied policy feedback theory to analyze constitutional design choices across governance systems. Explored how institutional structures shape long-term policy outcomes and citizen behavior.</p>
-          <div class="project-meta">
-            <span class="meta-chip">Policy Theory</span>
-            <span class="meta-chip">Governance</span>
-            <span class="meta-chip">Comparative Institutions</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="project-link">Read Analysis <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-          </div>
-        </div>
-      </div>
+<div class="project-card reveal">
+  <div class="project-card-inner">
+    <span class="project-domain"><span class="domain-dot"></span>Comparative Politics</span>
+    <h3 class="project-title">Causes of Declining Voter Participation in Bulgaria, 1990s–2020s</h3>
+    <p class="project-desc">Systems analysis of Bulgaria's dramatic voter turnout collapse — from 90.6% in 1990 to 34.4% in 2024. Applies institutional (ADICO framework), structural (governance network theory), and actor-level analysis to explain how clientelism, oligarchic capture, vote buying, and weakening programmatic competition collectively produced the post-communist low-turnout equilibrium.</p>
+    <div class="project-meta">
+      <span class="meta-chip">Systems Thinking</span>
+      <span class="meta-chip">ADICO Framework</span>
+      <span class="meta-chip">Governance Networks</span>
+      <span class="meta-chip">Electoral Politics</span>
+      <span class="meta-chip">Bulgaria</span>
+    </div>
+    <div class="project-links">
+      <a href="https://drive.google.com/file/d/1xlqZtNzsniECvQBaR_StjX0WRlDsITu3/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="project-link">Read Paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+    </div>
+  </div>
+</div>
 
       <!-- Card 5 -->
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-card-inner">
-          <span class="project-domain"><span class="domain-dot"></span>Data Analysis</span>
-          <h3 class="project-title">Econometric Modeling of Environmental Variables</h3>
-          <p class="project-desc">Developed econometric models to isolate causal relationships between environmental policy interventions and measurable outcomes. Applied regression discontinuity and difference-in-differences methods in R.</p>
-          <div class="project-meta">
-            <span class="meta-chip">R</span>
-            <span class="meta-chip">DiD</span>
-            <span class="meta-chip">Regression</span>
-            <span class="meta-chip">Causal Inference</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="project-link">View Code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-          </div>
-        </div>
-      </div>
+<div class="project-card reveal">
+  <div class="project-card-inner">
+    <span class="project-domain"><span class="domain-dot"></span>Statistical Modelling</span>
+    <h3 class="project-title">Predicting Rental Prices in India: Regression Modelling in R</h3>
+    <p class="project-desc">R Markdown assignment exploring predictive modelling on a dataset of 4,746 rental units across six Indian cities. Compared simple OLS and log-transformed regression models, evaluated train/test RMSE and 5-fold cross-validation, and analysed the effect of unit size, furnishing status, and point of contact on rent prices. Found that a log-transformed model with categorical predictors explained 58% of the variance — far outperforming size alone.</p>
+    <div class="project-meta">
+      <span class="meta-chip">OLS Regression</span>
+      <span class="meta-chip">Log Transformation</span>
+      <span class="meta-chip">Cross-Validation</span>
+      <span class="meta-chip">R</span>
+      <span class="meta-chip">Predictive Modelling</span>
+    </div>
+    <div class="project-links">
+      <a href="https://drive.google.com/file/d/19gh-KzgAg7uPtNQIn0wk3u4waf4NEYhl/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="project-link">View Report <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+    </div>
+  </div>
+</div>
 
     </div>
   </div>
 </section>
 
 <hr class="divider">
-
-<!-- SKILLS -->
-<section class="section skills-bg" id="skills">
-  <div class="container-wide">
-    <div class="section-header">
-      <p class="section-label reveal">Expertise</p>
-      <h2 class="section-title reveal reveal-delay-1">Research Skills</h2>
-    </div>
-    <div class="skills-layout">
-      <div class="skill-category reveal">
-        <div class="skill-category-title">
-          <span class="skill-category-icon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </span>
-          Quantitative Methods
-        </div>
-        <div class="skill-list">
-          <div class="skill-item"><span class="skill-name">Statistical Modeling (R)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:92%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">Python / Pandas</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">Econometrics</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">Data Visualization</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
-        </div>
-      </div>
-      <div class="skill-category reveal reveal-delay-1">
-        <div class="skill-category-title">
-          <span class="skill-category-icon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </span>
-          Geospatial & Remote Sensing
-        </div>
-        <div class="skill-list">
-          <div class="skill-item"><span class="skill-name">Google Earth Engine</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">Satellite Data (MODIS)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:82%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">GIS Analysis</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:78%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">SQL / Spatial DB</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:72%"></div></div></div>
-        </div>
-      </div>
-      <div class="skill-category reveal reveal-delay-2">
-        <div class="skill-category-title">
-          <span class="skill-category-icon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          </span>
-          Policy &amp; Writing
-        </div>
-        <div class="skill-list">
-          <div class="skill-item"><span class="skill-name">Policy Analysis</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">Academic Writing</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:93%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">Literature Review</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">Science Communication</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
+  
 
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
   <div class="container">
     <div class="contact-inner">
       <div class="contact-text">
-        <h2 class="reveal">Let's work<br><em style="font-style:italic;color:var(--color-primary)">together</em></h2>
-        <p class="reveal reveal-delay-1">Open to research collaborations, policy consulting, and data analysis opportunities. I'm especially interested in roles at the intersection of environmental science and evidence-based policymaking.</p>
+        <h3 class="reveal" style="margin-bottom: var(--space-6);">Happy to answer <em style="font-style:italic;color:var(--color-primary)">any questions</em></h3>
         <div class="contact-links reveal reveal-delay-2">
           <a href="mailto:yana@uni.minerva.edu" class="contact-link">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -626,6 +582,8 @@ footer{border-top:1px solid var(--color-divider);padding-block:var(--space-10);}
           </a>
         </div>
       </div>
+      
+      <!--
       <div class="contact-form reveal reveal-delay-1">
         <form onsubmit="handleSubmit(event)">
           <div class="form-group">
@@ -646,6 +604,8 @@ footer{border-top:1px solid var(--color-divider);padding-block:var(--space-10);}
           </button>
         </form>
       </div>
+    --> 
+
     </div>
   </div>
 </section>
@@ -657,9 +617,8 @@ footer{border-top:1px solid var(--color-divider);padding-block:var(--space-10);}
     <div class="footer-inner">
       <p class="footer-copy">© 2026 Learning to make data useful for the world.</p>
       <div class="footer-links">
-        <a href="#toolkit">Toolkit</a>
+        <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
-        <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
@@ -698,6 +657,26 @@ function handleSubmit(e){
   btn.style.background='var(--color-success,#437a22)';
   setTimeout(()=>{btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message';btn.style.background='';e.target.reset();},3000);
 }
+</script>
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      if (window.scrollY >= section.offsetTop - 100) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('nav-active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('nav-active');
+      }
+    });
+  });
 </script>
 </body>
 </html>
