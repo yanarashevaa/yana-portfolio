@@ -92,6 +92,7 @@ nav a.nav-active {
   }
 }
 
+
 /* ===== BASE ===== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;scroll-behavior:smooth;scroll-padding-top:var(--space-20);}
@@ -141,7 +142,7 @@ header{position:sticky;top:0;z-index:100;background:oklch(from var(--color-bg) l
 .hero{padding-block:clamp(var(--space-16),10vw,var(--space-32));}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-16);align-items:center;}
 .hero-eyebrow{font-size:var(--text-xs);font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-primary);margin-bottom:var(--space-4);}
-.hero-name{font-family:var(--font-display);font-size:var(--text-hero);font-weight:700;line-height:1.05;letter-spacing:-0.03em;color:var(--color-text);margin-bottom:var(--space-6);}
+.hero-name{font-family:var(--font-display);font-size:var(--text-hero);font-weight:700;line-height:1.05;letter-spacing:-0.03em;color:var(--color-text);margin-bottom:var(--space-6);white-space:nowrap;}
 .hero-name em{font-style:italic;color:var(--color-primary);}
 .hero-bio{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;max-width:52ch;margin-bottom:var(--space-8);}
 .hero-tags{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-8);}
@@ -247,13 +248,14 @@ footer{border-top:1px solid var(--color-divider);padding-block:var(--space-10);}
   .hero-grid{grid-template-columns:1fr;}
   .hero-visual{display:none;}
   .about-grid{grid-template-columns:1fr;}
-  .projects-grid{grid-template-columns:1fr 1fr;}
+  .projects-grid{grid-template-columns:1fr;}
   .project-card.featured .project-card-inner{display:block;}
   .contact-inner{grid-template-columns:1fr;}
   .skills-layout{grid-template-columns:1fr;}
   .nav-links{display:none;}
   .hamburger{display:flex;}
   .footer-inner{flex-direction:column;gap:var(--space-4);text-align:center;}
+.hero-name{white-space:normal !important;}
 }
 @media(max-width:480px){
   .stat-row{grid-template-columns:1fr 1fr;}
@@ -305,7 +307,7 @@ footer{border-top:1px solid var(--color-divider);padding-block:var(--space-10);}
   <div class="container-wide">
     <div class="hero-grid">
       <div>
-        <h1 class="hero-name reveal" style="font-size: var(--text-2xl); color: var(--color-primary); font-weight: 700; margin-bottom: var(--space-4); white-space: nowrap;">
+        <h1 class="hero-name reveal" style="font-size: var(--text-2xl); color: var(--color-primary); font-weight: 700; margin-bottom: var(--space-4);">
   Data and Research Projects
 </h1>
         <p class="hero-bio reveal reveal-delay-1" style="font-size: var(--text-base); color: var(--color-text-muted); line-height: 1.6;">
@@ -428,7 +430,7 @@ footer{border-top:1px solid var(--color-divider);padding-block:var(--space-10);}
   <div class="container-wide">
     <div class="section-header">
       <h2 class="section-title reveal reveal-delay-1">Academic Work</h2>
-      <p class="section-subtitle reveal reveal-delay-2">Selected work in climate science, public health, and environmental research.</p>
+      <p class="section-subtitle reveal reveal-delay-2">Work that shaped how I think about evidence, policy, and the gap between them.</p>
     </div>
     <div class="projects-grid">
 
